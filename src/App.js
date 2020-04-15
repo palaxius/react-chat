@@ -1,9 +1,12 @@
-import React from 'react';
+import React from "react";
+import "./styles/index.scss";
+import "./pages/Auth/Auth.scss";
+import Auth from "./pages/Auth/Auth";
 
 function App() {
   return (
     <div className="wrapper">
-    hello
+      <Auth />
     </div>
   );
 }
