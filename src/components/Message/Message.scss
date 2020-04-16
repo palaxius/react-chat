@@ -1,0 +1,92 @@
+.message {
+  display: flex;
+  margin-bottom: 15px;
+
+  &__content {
+    display: flex;
+    position: relative;
+    max-width: 400px;
+  }
+
+  &__attachments {
+    display: flex;
+    margin-bottom: 5px;
+    &-item {
+      margin-right: 5px;
+      cursor: pointer;
+      img {
+        width: 45px;
+        height: 45px;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  &__avatar {
+    display: flex;
+    flex-direction: column-reverse;
+    img {
+      border-radius: 50px;
+      width: 33px;
+      height: 33px;
+      margin-right: 13px;
+      margin-bottom: 23px;
+    }
+  }
+
+  &__bubble {
+    background: #3674ff;
+    box-shadow: 0px 5px 5px rgba(54, 116, 255, 0.196733);
+    border-radius: 12px 12px 12px 0px;
+    padding: 15px;
+    margin-bottom: 8px;
+  }
+
+  &__date {
+    font-size: 12px;
+    opacity: 0.5;
+  }
+
+  &__text {
+    color: #fff;
+    line-height: 20px;
+  }
+
+  &--isme {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  &__icon-readed {
+    position: absolute;
+    bottom: 25px;
+    left: -22px;
+  }
+}
+
+.message--isme .message__bubble {
+  background: #ffffff;
+  border: 1px solid #ececec;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.0220444);
+  border-radius: 12px 12px 0px 12px;
+  .message__text {
+    color: #000;
+  }
+}
+.message--isme .message__content {
+  flex-direction: row-reverse;
+  display: flex;
+}
+
+.message--isme .message__avatar {
+  img {
+    margin-right: 0;
+    margin-left: 13px;
+  }
+}
+
+.message--isme .message__info {
+  .message__date {
+    text-align: right;
+  }
+}

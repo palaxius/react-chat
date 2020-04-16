@@ -1,7 +1,7 @@
 import React from "react";
-import LoginForm from "../../modules/LoginForm/components/LoginForm";
 import { Route } from "react-router";
-import RegisterForm from "../../modules/RefisterForm/components/RegisterForm";
+import LoginForm from "../../modules/LoginForm/containers/LoginForm";
+import RegisterForm from "../../modules/RefisterForm/containers/RegisterForm";
 
 const Auth = () => {
   return (
