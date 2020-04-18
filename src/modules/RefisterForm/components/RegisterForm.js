@@ -9,6 +9,7 @@ import {
 import Button from "../../../components/Button/Button";
 import { Link } from "react-router-dom";
 import Form from "../../../components/Form/Form";
+import validateField from "../../../utility/helpers/validateField";
 
 const RegisterForm = (props) => {
   const {
@@ -38,9 +39,7 @@ const RegisterForm = (props) => {
             }}
           >
             <BaseForm.Item
-              validateStatus={
-                !touched.email ? "" : errors.email ? "error" : "success"
-              }
+              validateStatus={validateField("email", touched, errors)}
               hasFeedback
               help={!touched.email ? "" : errors.email}
             >
@@ -63,15 +62,13 @@ const RegisterForm = (props) => {
             >
               <Input
                 prefix={<UserOutlined className="site-form-item-icon" />}
-                type="user"
+                type="fullname"
                 placeholder="Ваше имя"
                 size="large"
               />
             </BaseForm.Item>
             <BaseForm.Item
-              validateStatus={
-                !touched.password ? "" : errors.password ? "error" : "success"
-              }
+              validateStatus={validateField("password", touched, errors)}
               hasFeedback
               help={!touched.password ? "" : errors.password}
             >
@@ -87,16 +84,14 @@ const RegisterForm = (props) => {
               />
             </BaseForm.Item>
             <BaseForm.Item
-              validateStatus={
-                !touched.password ? "" : errors.password ? "error" : "success"
-              }
+              validateStatus={validateField("password", touched, errors)}
               hasFeedback
               help={!touched.password ? "" : errors.password}
             >
               <Input
                 id="password"
                 prefix={<LockOutlined className="site-form-item-icon" />}
-                type="password"
+                type="password2"
                 placeholder="Повторить пароль"
                 size="large"
               />

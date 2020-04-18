@@ -1,77 +1,83 @@
-import React, { Component } from "react";
+import React from "react";
 import { Form as BaseForm, Input } from "antd";
-import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import { LockOutlined, MailOutlined } from "@ant-design/icons";
 import Button from "../../../components/Button/Button";
 import { Link } from "react-router-dom";
 import Form from "../../../components/Form/Form";
+import validateField from "../../../utility/helpers/validateField";
 
-class LoginForm extends Component {
-  render() {
-    const onFinish = (values) => {
-      console.log("Received values of form: ", values);
-    };
-
-    return (
-      <>
-        <div className="auth__top">
-          <h2>Войти в аккаунт</h2>
-          <p>Пожалуйста, войдите в свой аккаунт</p>
-        </div>
-        <Form>
-          <BaseForm
-            name="normal_login"
-            className="login-form"
-            initialValues={{
-              remember: true,
-            }}
-            onFinish={onFinish}
+const LoginForm = (props) => {
+  const {
+    values,
+    touched,
+    errors,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    isValid,
+    dirty,
+  } = props;
+  return (
+    <>
+      <div className="auth__top">
+        <h2>Войти в аккаунт</h2>
+        <p>Пожалуйста, войдите в свой аккаунт</p>
+      </div>
+      <Form>
+        <BaseForm
+          onSubmit={handleSubmit}
+          name="normal_login"
+          className="login-form"
+        >
+          <BaseForm.Item
+            validateStatus={validateField("email", touched, errors)}
+            hasFeedback
+            help={!touched.email ? "" : errors.email}
           >
-            <BaseForm.Item
-              name="username"
-              rules={[
-                {
-                  required: true,
-                  message: "Please input your Username!",
-                },
-              ]}
-            >
-              <Input
-                prefix={<UserOutlined className="site-form-item-icon" />}
-                placeholder="Username"
-                size="large"
-              />
-            </BaseForm.Item>
-            <BaseForm.Item
-              name="password"
-              hasFeedback
-              validateStatus="success"
-              rules={[
-                {
-                  required: true,
-                  message: "Please input your Password!",
-                },
-              ]}
-            >
-              <Input
-                prefix={<LockOutlined className="site-form-item-icon" />}
-                type="password"
-                placeholder="Password"
-                size="large"
-              />
-            </BaseForm.Item>
-            <BaseForm.Item>
-              <Button type="primary" size="large">
-                Войти в аккаунт
-              </Button>
-            </BaseForm.Item>
-            <Link className="auth__register-link" to="/register">
-              Зарегистрироваться
-            </Link>
-          </BaseForm>
-        </Form>
-      </>
-    );
-  }
-}
+            <Input
+              prefix={<MailOutlined />}
+              id="email"
+              placeholder="E-Mail"
+              size="large"
+              value={values.email}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+          </BaseForm.Item>
+          <BaseForm.Item
+            validateStatus={validateField("password", touched, errors)}
+            hasFeedback
+            help={!touched.password ? "" : errors.password}
+          >
+            <Input
+              id="password"
+              prefix={<LockOutlined className="site-form-item-icon" />}
+              type="password"
+              placeholder="Пароль"
+              size="large"
+              value={values.password}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+          </BaseForm.Item>
+          <BaseForm.Item>
+            {/* {dirty && !isValid && (
+                <span>
+                  Пароль должен содержать хотя бы одну букву из верхнего
+                  регистра, одну цифру и быть не меньше 8 символов
+                </span>
+              )} */}
+            <Button onClick={handleSubmit} type="primary" size="large">
+              Войти в аккаунт
+            </Button>
+          </BaseForm.Item>
+          <Link className="auth__register-link" to="/register">
+            Зарегистрироваться
+          </Link>
+        </BaseForm>
+      </Form>
+    </>
+  );
+};
 
 export default LoginForm;
