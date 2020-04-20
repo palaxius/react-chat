@@ -1,23 +1,20 @@
 import React from "react";
-import Time from "../Time/Time";
+// import Time from "../Time/Time";
 import ReadStatus from "../ReadStatus/ReadStatus";
 import "./DialogItem.scss";
 import classNames from "classnames";
+import { format, isToday } from "date-fns";
+import Avatar from "../Avatar/Avatar";
 
-const getAvatar = (avatar) => {
-  if (avatar) {
-    return (
-      <img
-        src="https://sun9-67.userapi.com/c852036/v852036196/134c19/oCxXHatSU_w.jpg?ava=1"
-        alt="avatar"
-      />
-    );
+const getMessageTime = (created_at) => {
+  if (isToday(created_at)) {
+    return format(created_at, "HH:mm");
   } else {
-    // make avatar
+    return format(created_at, "dd.MM.yyyy");
   }
 };
 
-const DialogItem = ({ user }) => {
+const DialogItem = ({ user, unreaded, isMe, created_at, text }) => {
   return (
     <div
       className={classNames("dialogs__item", {
@@ -26,22 +23,23 @@ const DialogItem = ({ user }) => {
     >
       <div className="dialogs__item-avatar">
         {/* <img src={user.avatar} alt={`${user.fullname} avatar`} /> */}
-        {getAvatar(user.avatar)}
+        <Avatar user={user}/>
       </div>
       <div className="dialogs__item-info">
         <div className="dialogs__item-info-top">
           <b>{user.fullname}</b>
-          {/* <Time date={new Date()} /> */}
-          <span>13:03</span>
+          <span>
+            {/* <Time date={} /> */}
+            {getMessageTime(created_at)}
+          </span>
+
+          {/* <span>13:03</span> */}
         </div>
         <div className="dialogs__item-info-bottom">
-          <p>
-            Я ща стрепсилс тебе куплю, потом заеду домой, покушаю, немного
-            поботаю, и сяду наверно в доту играть
-          </p>
-          <ReadStatus isMe={true} isReaded={false} />
-          {user.unreaded > 0 && (
-            <div className="dialogs__item-count">{user.unreaded}</div>
+          <p>{text}</p>
+          {isMe && <ReadStatus isMe={true} isReaded={false} />}
+          {unreaded > 0 && (
+            <div className="dialogs__item-count">{unreaded}</div>
           )}
         </div>
       </div>

@@ -1,6 +1,10 @@
 @import "~antd/dist/antd.css";
 @import "~reset-css/reset.css";
 
+* {
+  outline: none;
+}
+
 body,
 html,
 #root,

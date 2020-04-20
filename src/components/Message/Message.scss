@@ -69,6 +69,53 @@
       background-color: #e5edff;
     }
   }
+
+  &--is-audio {
+    audio {
+      display: none;
+    }
+    width: 250px;
+    #{$self}__bubble {
+      width: 250px;
+      position: relative;
+      overflow: hidden;
+    }
+    #{$self}__audio {
+      &-info {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      &-btn {
+        button {
+          cursor: pointer;
+          border: 0;
+          background: #0f3997;
+          height: 28px;
+          width: 28px;
+          border-radius: 30px;
+          img {
+            height: 13px;
+          }
+        }
+      }
+      &-duration {
+        opacity: 0.5;
+        color: #fff;
+        font-weight: 500;
+        font-size: 12px;
+      }
+      &-progress {
+        position: absolute;
+        background-color: #418fff;
+        left: 0;
+        top: 0;
+        height: 100%;
+        transition: width 0.3s ease;
+      }
+    }
+  }
 }
 
 .message--isme .message__bubble {

@@ -4,6 +4,11 @@
     $item: &;
     display: flex;
     margin-bottom: 25px;
+
+    .message__icon-readed {
+      position: absolute;
+    }
+
     &-avatar {
       position: relative;
       flex: 0 0 40px;
@@ -42,6 +47,7 @@
       &-bottom {
         position: relative;
         p {
+          line-height: 17px;
           white-space: nowrap; /* Запрещаем перенос строк */
           overflow: hidden;
           text-overflow: ellipsis;
