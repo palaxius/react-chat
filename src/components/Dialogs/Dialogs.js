@@ -2,18 +2,33 @@ import React from "react";
 import "./Dialogs.scss";
 import DialogItem from "../DialogItem/DialogItem";
 import orderBy from "lodash/orderBy";
+import { Input, Empty } from "antd";
 
-const Dialogs = ({ items, userId }) => (
+const Dialogs = ({ items, userId, onSearch, inputValue }) => (
   <div className="dialogs">
-    {orderBy(items, ["created_at"], ["desc"]).map((item) => {
-      return (
-        <DialogItem
-          key={item._id}    
-          isMe={item.user._id === userId}
-          {...item}
-        />
-      );
-    })}
+    <div className="chat__sidebar-search">
+      <Input.Search
+        placeholder="Поиск среди контактов"
+        onChange={(e) => onSearch(e.target.value)}
+        value={inputValue}
+      />
+    </div>
+    {items.length ? (
+      orderBy(items, ["created_at"], ["desc"]).map((item) => {
+        return (
+          <DialogItem
+            key={item._id}
+            isMe={item.user._id === userId}
+            {...item}
+          />
+        );
+      })
+    ) : (
+      <Empty
+        image={Empty.PRESENTED_IMAGE_SIMPLE}
+        description="Ничего не найдено"
+      />
+    )}
   </div>
 );
 

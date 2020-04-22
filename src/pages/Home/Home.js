@@ -1,11 +1,62 @@
 import React from "react";
-import Dialogs from "../../components/Dialogs/Dialogs";
+// import Dialogs from "../../components/Dialogs/Dialogs";
 import Message from "../../components/Message/Message";
+import "./Home.scss";
+import {
+  TeamOutlined,
+  FormOutlined,
+  EllipsisOutlined,
+  SmileOutlined,
+} from "@ant-design/icons";
+import { Input, Button } from "antd";
+import Status from "../../components/Status/Status";
+import ChatInput from "../../components/ChatInput/ChatInput";
+import Dialogs from "../../containers/DialogsContainer";
+import Messages from "../../Messages/Messages";
+import dialogsJSON from "../../dialogs.json";
+
+const { Search } = Input;
 
 const Home = () => {
   return (
     <section className="home">
-      <Dialogs
+      <div className="chat">
+        <div className="chat__sidebar">
+          <div className="chat__sidebar-header">
+            <div>
+              <i>
+                <Button shape="circle" icon={<TeamOutlined />} />
+              </i>
+
+              <span>Список диалогов</span>
+            </div>
+            <Button shape="circle" icon={<FormOutlined />} />
+          </div>
+
+          <div className="chat__sidebar-dialogs">
+            <Dialogs userId={0} items={dialogsJSON} />
+          </div>
+        </div>
+        <div className="chat__dialog">
+          <div className="chat__dialog-header">
+            <div />
+            <div className="chat__dialog-header-center">
+              <b className="chat__dialog-username">Гай Юлий Цезарь</b>
+              <div className="chat__dialog-status">
+                <Status online />
+              </div>
+            </div>
+            <Button shape="circle" icon={<EllipsisOutlined />} />
+          </div>
+          <div className="chat__dialog-messages">
+            <Messages />
+          </div>
+          <div className="chat__dialog-input">
+            <ChatInput />
+          </div>
+        </div>
+      </div>
+      {/* <Dialogs
         userId={0}
         items={[
           {
@@ -54,16 +105,16 @@ const Home = () => {
             },
           },
         ]}
-      />
+      /> */}
 
-      <Message
+      {/* <Message
         avatar="https://sun9-67.userapi.com/c852036/v852036196/134c19/oCxXHatSU_w.jpg?ava=1"
         date={new Date()}
         audio={
           "https://notificationsounds.com/soundfiles/069059b7ef840f0c74a814ec9237b6ec/file-de_vuvuzela-power-down.mp3"
         }
         isReaded={false}
-      />
+      /> */}
       {/* <Message
         avatar="https://sun9-67.userapi.com/c852036/v852036196/134c19/oCxXHatSU_w.jpg?ava=1"
         text="Мы тут недавно войска Ариовиста разбили, чуваки хотели закрепиться на галльских землях, лол 🌝"

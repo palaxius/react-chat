@@ -7,10 +7,11 @@ import { format, isToday } from "date-fns";
 import Avatar from "../Avatar/Avatar";
 
 const getMessageTime = (created_at) => {
-  if (isToday(created_at)) {
-    return format(created_at, "HH:mm");
+  const newCreated_at = new Date(created_at);
+  if (isToday(newCreated_at)) {
+    return format(newCreated_at, "HH:mm");
   } else {
-    return format(created_at, "dd.MM.yyyy");
+    return format(newCreated_at, "dd.MM.yyyy");
   }
 };
 
@@ -23,7 +24,7 @@ const DialogItem = ({ user, unreaded, isMe, created_at, text }) => {
     >
       <div className="dialogs__item-avatar">
         {/* <img src={user.avatar} alt={`${user.fullname} avatar`} /> */}
-        <Avatar user={user}/>
+        <Avatar user={user} />
       </div>
       <div className="dialogs__item-info">
         <div className="dialogs__item-info-top">

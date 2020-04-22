@@ -1,0 +1,25 @@
+.status {
+  display: inline-block;
+  text-align: center;
+  font-size: 14.5px;
+  line-height: 16px;
+  color: #e0d0d0;
+  position: relative;
+
+  &::before {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 20px;
+    background: #bdc1c0;
+    left: -10px;
+    bottom: 2.1px;
+  }
+  &--online {
+    &::before {
+      background: #00c980;
+    }
+  }
+}
