@@ -1,19 +1,15 @@
 import React from "react";
-// import Dialogs from "../../components/Dialogs/Dialogs";
-import Message from "../../components/Message/Message";
 import "./Home.scss";
 import {
   TeamOutlined,
   FormOutlined,
   EllipsisOutlined,
-  SmileOutlined,
 } from "@ant-design/icons";
 import { Input, Button } from "antd";
 import Status from "../../components/Status/Status";
 import ChatInput from "../../components/ChatInput/ChatInput";
 import Dialogs from "../../containers/DialogsContainer";
-import Messages from "../../Messages/Messages";
-import dialogsJSON from "../../dialogs.json";
+import Messages from "../../containers/MessagesContainer";
 
 const { Search } = Input;
 
@@ -34,7 +30,7 @@ const Home = () => {
           </div>
 
           <div className="chat__sidebar-dialogs">
-            <Dialogs userId={0} items={dialogsJSON} />
+            <Dialogs userId={0} items={null} />
           </div>
         </div>
         <div className="chat__dialog">
@@ -50,7 +46,7 @@ const Home = () => {
           </div>
           <div className="chat__dialog-messages">
             <Messages />
-          </div>
+          </div>  
           <div className="chat__dialog-input">
             <ChatInput />
           </div>

@@ -1,0 +1,13 @@
+.messages {
+  // height: 100%;
+  position: relative;
+  padding: 20px;
+  padding-bottom: 0;
+  overflow: auto;
+  height: calc(100vh - 140px);
+  &--loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

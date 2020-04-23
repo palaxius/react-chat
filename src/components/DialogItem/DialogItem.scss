@@ -4,6 +4,24 @@
     display: flex;
     margin-bottom: 25px;
 
+    &:hover {
+      background-color: #f3f7ff;
+    }
+
+    &-selected {
+      .dialogs__item-info-top {
+        b {
+          color: #fff;
+        }
+      }
+    }
+
+    &-selected,
+    &-selected:hover {
+      background-color: #40a9ff;
+      color: #fff !important;
+    }
+
     .message__icon-readed {
       position: absolute;
     }
@@ -50,7 +68,7 @@
           white-space: nowrap; /* Запрещаем перенос строк */
           overflow: hidden;
           text-overflow: ellipsis;
-          opacity: 0.4;
+          opacity: 0.6;
           width: 220px;
         }
       }

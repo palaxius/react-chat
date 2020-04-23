@@ -8,12 +8,27 @@ import {
   SendOutlined,
 } from "@ant-design/icons";
 
+import { UploadField } from "@navjobs/upload";
+
+import { Picker } from "emoji-mart";
+
 const ChatInput = ({}) => {
   const [value, setValue] = useState("");
+  const [emoji, setEmoji] = useState(false);
+
   return (
     <div className="chat-input">
       <div className="chat-input__smile">
-        <Button shape="circle" icon={<SmileOutlined />} />
+        {emoji && (
+          <div className="chat-input__emoji-picker">
+            <Picker set="apple" />
+          </div>
+        )}
+        <Button
+          onClick={() => setEmoji(!emoji)}
+          shape="circle"
+          icon={<SmileOutlined />}
+        />
       </div>
       <Input
         onChange={(event) => setValue(event.target.value)}
@@ -21,7 +36,19 @@ const ChatInput = ({}) => {
         placeholder="Введите текст сообщения…"
       />
       <div className="chat-input__actions">
-        <Button shape="circle" icon={<CameraOutlined />} />
+        <UploadField
+          onFiles={(files) => console.log(files)}
+          containerProps={{
+            className: "chat-input__actions-upload-btn",
+          }}
+          uploadProps={{
+            accept: ".jpg,.jpeg,.png,.gif,.bmp",
+            multiple: "multiple",
+          }}
+        >
+          <Button shape="circle" icon={<CameraOutlined />} />
+        </UploadField>
+
         {!value ? (
           <Button shape="circle" icon={<AudioOutlined />} />
         ) : (

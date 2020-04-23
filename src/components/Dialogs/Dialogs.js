@@ -4,7 +4,7 @@ import DialogItem from "../DialogItem/DialogItem";
 import orderBy from "lodash/orderBy";
 import { Input, Empty } from "antd";
 
-const Dialogs = ({ items, userId, onSearch, inputValue }) => (
+const Dialogs = ({ items, userId, onSearch, inputValue, onSelectDialog, currentDialogId }) => (
   <div className="dialogs">
     <div className="chat__sidebar-search">
       <Input.Search
@@ -20,6 +20,8 @@ const Dialogs = ({ items, userId, onSearch, inputValue }) => (
             key={item._id}
             isMe={item.user._id === userId}
             {...item}
+            onSelect={onSelectDialog}
+            currentDialogId={currentDialogId}
           />
         );
       })

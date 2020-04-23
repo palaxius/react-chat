@@ -64,11 +64,6 @@
           padding: 10px 30px 15px 15px;
           cursor: pointer;
           margin-bottom: 0;
-
-          &:active,
-          &:hover {
-            background-color: #f3f7ff;
-          }
         }
       }
     }
@@ -107,11 +102,11 @@
     }
 
     &-messages {
-      position: relative;
-      padding: 20px;
-      padding-bottom: 0;
-      overflow: auto;
-      height: calc(100vh - 140px);
+      // position: relative;
+      // padding: 20px;
+      // padding-bottom: 0;
+      // overflow: auto;
+      // height: calc(100vh - 140px);
 
       .ant-empty {
         position: absolute;

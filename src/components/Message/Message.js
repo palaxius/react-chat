@@ -7,6 +7,7 @@ import waveSvg from "../../assets/wave.svg";
 import playSvg from "../../assets/play.svg";
 import pauseSvg from "../../assets/pause.svg";
 import convertCurrentTime from "../../utility/helpers/convertCurrentTime";
+import Avatar from "../Avatar/Avatar";
 
 const AudioMessage = ({ audio }) => {
   const audioElem = useRef(null);
@@ -105,7 +106,8 @@ const Message = ({
       <div className="message__content">
         {/* <ReadStatus isMe={isMe} isReaded={isReaded} /> */}
         <div className="message__avatar">
-          <img src={avatar} alt={`Avatar ${user.fullname}`} />
+          <Avatar user={user} />
+          {/* <img src={avatar} alt={`Avatar ${user.fullname}`} /> */}
         </div>
 
         <div className="message__info">

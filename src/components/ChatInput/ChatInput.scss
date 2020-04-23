@@ -2,6 +2,13 @@
   display: flex;
   position: relative;
   padding: 20px;
+
+  &__emoji-picker {
+    position: absolute;
+    bottom: 50px;
+    z-index: 3;
+  }
+
   &-smile {
     position: absolute;
   }
@@ -29,6 +36,21 @@
 
     cursor: pointer;
     transition: all 0.2s ease-in-out;
+
+    &-upload-btn {
+      cursor: pointer;
+      input {
+        cursor: pointer;
+      }
+      button {
+        cursor: pointer;
+      }
+      &:hover {
+        button {
+          opacity: 1;
+        }
+      }
+    }
 
     .send {
       opacity: 0.5;

@@ -1,16 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Dialogs from "../components/Dialogs/Dialogs";
+import actions from "../redux/actions/dialogs";
+import { connect } from "react-redux";
 
-const DialogsContainer = ({ items, userId }) => {
+const DialogsContainer = ({
+  items,
+  userId,
+  fetchDialogs,
+  setDialog,
+  currentDialogId,
+}) => {
   const [inputValue, setValue] = useState("");
   const [filtred, setFiltred] = useState(Array.from(items));
 
   const onChangeInput = (value) => {
     setFiltred(
-      items.filter((dialog) => dialog.user.fullname.toLowerCase().indexOf(value) >= 0)
+      items.filter(
+        (dialog) =>
+          dialog.user.fullname.toLowerCase().indexOf(value.toLowerCase()) >= 0
+      )
     );
     setValue(value);
   };
+
+  useEffect(() => {
+    if (!items.length) {
+      fetchDialogs();
+    } else {
+      setFiltred(items);
+    }
+  }, [items]);
 
   return (
     <Dialogs
@@ -18,8 +37,10 @@ const DialogsContainer = ({ items, userId }) => {
       onSearch={onChangeInput}
       inputValue={inputValue}
       userId={userId}
+      onSelectDialog={setDialog}
+      currentDialogId={currentDialogId}
     />
   );
 };
 
-export default DialogsContainer;
+export default connect(({ dialogs }) => dialogs, actions)(DialogsContainer);
