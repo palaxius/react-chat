@@ -23,13 +23,13 @@ const DialogsContainer = ({
     setValue(value);
   };
 
-  useEffect(() => {
-    if (!items.length) {
-      fetchDialogs();
-    } else {
-      setFiltred(items);
-    }
-  }, [items]);
+  // useEffect(() => {
+  //   if (!items.length) {
+  //     fetchDialogs();
+  //   } else {
+  //     setFiltred(items);
+  //   }
+  // }, [items]);
 
   return (
     <Dialogs

@@ -11,7 +11,7 @@ import ChatInput from "../../components/ChatInput/ChatInput";
 import Dialogs from "../../containers/DialogsContainer";
 import Messages from "../../containers/MessagesContainer";
 
-const { Search } = Input;
+// const { Search } = Input;
 
 const Home = () => {
   return (

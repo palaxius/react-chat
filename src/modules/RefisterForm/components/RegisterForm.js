@@ -19,8 +19,8 @@ const RegisterForm = (props) => {
     handleChange,
     handleBlur,
     handleSubmit,
-    isValid,
-    dirty,
+    // isValid,
+    // dirty,
   } = props;
   const success = false;
   return (

@@ -3,15 +3,18 @@ import "./styles/index.scss";
 import "./pages/Auth/Auth.scss";
 import Auth from "./pages/Auth/Auth";
 import Home from "./pages/Home/Home";
-import { Route } from "react-router";
+import { Route, Redirect } from "react-router";
+import { connect } from "react-redux";
 
-function App() {
+const App = (props) => {
+  const { isAuth } = props;
   return (
     <div className="wrapper">
+      {isAuth ? <Redirect to="/im" /> : <Redirect to="/login" />}
       <Route exact path={["/", "/login", "/register"]} component={Auth} />
       <Route exact path={"/im"} component={Home} />
     </div>
   );
-}
+};
 
-export default App;
+export default connect(({ user }) => ({ isAuth: user.isAuth }))(App);

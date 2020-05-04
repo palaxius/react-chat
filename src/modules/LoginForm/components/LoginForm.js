@@ -14,8 +14,10 @@ const LoginForm = (props) => {
     handleChange,
     handleBlur,
     handleSubmit,
-    isValid,
-    dirty,
+    isSubmitting,
+    status
+    // isValid,
+    // dirty,
   } = props;
   return (
     <>
@@ -67,7 +69,12 @@ const LoginForm = (props) => {
                   регистра, одну цифру и быть не меньше 8 символов
                 </span>
               )} */}
-            <Button onClick={handleSubmit} type="primary" size="large">
+            <Button
+              disabled={isSubmitting}
+              onClick={handleSubmit}
+              type="primary"
+              size="large"
+            >
               Войти в аккаунт
             </Button>
           </BaseForm.Item>
